@@ -4,7 +4,7 @@ import { notificarPeloteroPrevio, desecharReservasPasadas } from './task';
 // Tarea programada para crear una tarea cada minuto
 
 // Programa el envío de notificaciones cada hora
-cron.schedule('37 * * * *', async() => {
+cron.schedule('05 * * * *', async() => {
     // Lógica para enviar las notificaciones push aquí
     console.log('Listing tasks every 01 minutes');
 
