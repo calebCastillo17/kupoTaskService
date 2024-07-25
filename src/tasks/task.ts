@@ -28,10 +28,13 @@ export const notificarPeloteroPrevio = async (title: string, body: string) => {
                 return [];
             }
     
-            const clientesAEnviar = reservas.map((reserva: any) => reserva.cliente.notificaciones_token);
+            const clientesAEnviar = reservas
+                .filter((reserva: any) => reserva.cliente && reserva.cliente.notificaciones_token)
+                .map((reserva: any) => reserva.cliente.notificaciones_token );
             return clientesAEnviar;
         } catch (error) {
             console.log('este es el error: ', error);
+            return []; // En caso de error, retorna un array vacío
         }
     }
 
@@ -52,12 +55,6 @@ export const notificarPeloteroPrevio = async (title: string, body: string) => {
         console.log('No hay tokens de notificación para enviar.');
     }
 };
-
-
-
-
-
-
 
 export const desecharReservasPasadas = async() => {
     try {
